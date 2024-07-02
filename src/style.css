@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Arial", sans-serif;
+  background-color: rgb(33, 34, 65);
+}
+
+header {
+  background-color: #21a1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  color: rgb(33, 34, 65);
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 5vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.list {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+ul li input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  padding: 10px;
+  width: 90%;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: rgb(33, 34, 65);
+  outline: none;
+}
+
+button {
+  background-color: #21a1f1;
+  border: 2px solid #21a1f1;
+  border-radius: 0 5px 5px 0;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+button:hover {
+  background-color: #176596;
+  border-color: #176596;
+}
