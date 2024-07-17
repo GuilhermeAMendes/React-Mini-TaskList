@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 
 function App() {
-  const [tarefas, setTarefas] = useState([
-    "Participar da reunião do PET ADS - 02/07/2024",
-    "Estudar React Hooks - 02/07/2024",
-    "Atualizar GitHub - 02/07/2024",
-  ]);
+  
+  const [tarefas, setTarefas] = useState([]);
 
   const [novaTarefa, setNovaTarefa] = useState("");
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("Tasks")) || [];
+    setTarefas(data)
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("Tasks", JSON.stringify(tarefas));
+  }, [tarefas]);
 
   const handledAdd = (e) => {
     e.preventDefault();
