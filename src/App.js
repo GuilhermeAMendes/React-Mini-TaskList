@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import "./style.css";
 
 function App() {
@@ -12,14 +12,14 @@ function App() {
     localStorage.setItem("Tasks", JSON.stringify(tarefas));
   }, [tarefas]);
 
-  const handledAdd = (e) => {
+  const handledAdd = useCallback((e) => {
     e.preventDefault();
     if (novaTarefa.trim() !== "") {
       let date = new Date().toLocaleDateString();
       setTarefas([...tarefas, `${novaTarefa} - ${date}`]);
       setNovaTarefa("");
     }
-  };
+  }, [novaTarefa, tarefas]);
 
   const totalTarefas = useMemo(() => tarefas.length, [tarefas]);
 
