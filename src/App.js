@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./style.css";
 
 function App() {
-  
-  const [tarefas, setTarefas] = useState([]);
+  const [tarefas, setTarefas] = useState(
+    JSON.parse(localStorage.getItem("Tasks")) || []
+  );
 
   const [novaTarefa, setNovaTarefa] = useState("");
-
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("Tasks")) || [];
-    setTarefas(data)
-  }, []);
 
   useEffect(() => {
     localStorage.setItem("Tasks", JSON.stringify(tarefas));
@@ -24,6 +20,8 @@ function App() {
       setNovaTarefa("");
     }
   };
+
+  const totalTarefas = useMemo(() => tarefas.length, [tarefas]);
 
   return (
     <div>
@@ -40,14 +38,20 @@ function App() {
         />
         <button type="submit">Adicionar</button>
       </form>
-      <ul className="list">
-        {tarefas.map((item, index) => (
-          <li key={index}>
-            <input type="checkbox" name="chk" />
-            {item}
-          </li>
-        ))}
-      </ul>
+      {totalTarefas >= 1 && (
+        <ul className="list">
+          {tarefas.map((item, index) => (
+            <li key={index}>
+              <input type="checkbox" name="chk" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
+      <br />
+      {totalTarefas >= 1 && (
+        <strong>Quantidade de total de tarefa(s) : {totalTarefas}</strong>
+      )}
     </div>
   );
 }

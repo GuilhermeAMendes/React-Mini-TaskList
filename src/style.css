@@ -53,6 +53,20 @@ ul li {
 
 ul li input[type="checkbox"] {
   margin-right: 10px;
+  appearance: none;
+  border: 2.5px solid #21a1f1;
+  border-radius: 10px;
+  padding: 10px;
+  color: #176596;
+  font-weight: 900;
+}
+
+input[type="checkbox"]::before {
+  content: "Open";
+}
+
+input[type="checkbox"]:checked::before {
+  content: "Close";
 }
 
 input[type="text"] {
@@ -84,4 +98,8 @@ button {
 button:hover {
   background-color: #176596;
   border-color: #176596;
+}
+
+strong {
+  color: white;
 }
